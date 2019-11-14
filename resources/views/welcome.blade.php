@@ -6,9 +6,12 @@
         </div>
         <ul>
         @forelse($links as $link)
-
-                <li>{{$link->user->name}} posted  {{$link->url}} </li>
-
+                <li>
+                    {{$link->url}} posted by
+                @foreach($link->user as $user)
+                        {{$user->name}},
+                @endforeach
+                </li>
         @empty
             <h4>No Links added yet</h4>
             @endforelse

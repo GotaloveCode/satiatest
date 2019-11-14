@@ -40,11 +40,20 @@ class LinkController extends Controller
         $this->validate($request,[
             'url' => 'required',
         ]);
-        //save
-        Link::create([
-            'url' => $request->url,
-            'user_id' => auth()->user()->id
-        ]);
+
+        $exists = Link::where('url',$request->url)->first();
+
+        if($exists){
+            $user_exists = $exists->user()->where('user_id',auth()->id())->first();
+            if($user_exists){
+                return redirect()->back()->withErrors(["message" => "User exists" ]);
+            }else{
+                auth()->user()->links()->attach($exists->id);
+            }
+        }else{
+            $link = Link::create(['url' => $request->url]);
+            auth()->user()->links()->attach($link->id);
+        }
 
         return redirect(route('links.index'));
     }
