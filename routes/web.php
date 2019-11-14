@@ -13,6 +13,8 @@
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
-Route::get('/links','LinkController@index')->name('links.index');
-Route::get('/links/create','LinkController@create')->name('links.create');
-Route::post('/links/create','LinkController@store')->name('links.store');
+Route::middleware('auth')->group(function (){
+    Route::get('/links','LinkController@index')->name('links.index');
+    Route::get('/links/create','LinkController@create')->name('links.create');
+    Route::post('/links/create','LinkController@store')->name('links.store');
+});
