@@ -17,6 +17,7 @@ class CreateLinksTable extends Migration
             $table->bigIncrements('id');
             $table->string('url');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
