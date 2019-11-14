@@ -16,6 +16,8 @@ class LinkController extends Controller
     {
        $links = auth()->user()->links->all();
 
+       dd($links);
+
         return view('home',compact('links'));
     }
 
