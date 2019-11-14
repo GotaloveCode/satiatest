@@ -20,3 +20,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/links/create','LinkController@create')->name('links.create');
     Route::post('/links/create','LinkController@store')->name('links.store');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
