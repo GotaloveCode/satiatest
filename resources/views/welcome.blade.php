@@ -1,4 +1,3 @@
-<?php
 @extends('layout')
 @section('content')
     <div class="content">
@@ -8,7 +7,7 @@
         <ul>
         @forelse($links as $link)
 
-                <li>{{$link->user->name}}    {{$link->url}} </li>
+                <li>{{$link->user->name}} posted  {{$link->url}} </li>
 
         @empty
             <h4>No Links added yet</h4>

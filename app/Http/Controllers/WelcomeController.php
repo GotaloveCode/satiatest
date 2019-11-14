@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-    public function create()
+    public function index()
     {
         $links = Link::with('user')->get();
         return view('welcome',compact('links'));

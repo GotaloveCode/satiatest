@@ -1,4 +1,3 @@
-<?php
 @extends('layout')
 @section('content')
     <div class="content">
