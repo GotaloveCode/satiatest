@@ -14,9 +14,7 @@ class LinkController extends Controller
      */
     public function index()
     {
-       $links = auth()->user()->links->all();
-
-       dd($links);
+       $links = auth()->user()->links()->get();
 
         return view('home',compact('links'));
     }
@@ -39,58 +37,17 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: validate later
+        $this->validate($request,[
+            'url' => 'required',
+        ]);
         //save
         Link::create([
             'url' => $request->url,
-            'user_id' => auth()->id()
+            'user_id' => auth()->user()->id
         ]);
 
         return redirect(route('links.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Link  $link
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Link $link)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Link  $link
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Link $link)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Link  $link
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Link $link)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Link  $link
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Link $link)
-    {
-        //
-    }
 }

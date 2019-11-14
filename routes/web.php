@@ -13,14 +13,12 @@
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
-Auth::routes(['register' => true]);
+Auth::routes();
 
 Route::middleware('auth')->group(function (){
     Route::get('/links','LinkController@index')->name('links.index');
     Route::get('/links/create','LinkController@create')->name('links.create');
     Route::post('/links/create','LinkController@store')->name('links.store');
 });
-
-Auth::routes();
 
 Route::get('/home', 'LinkController@index')->name('home');
