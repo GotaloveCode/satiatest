@@ -1,11 +1,11 @@
 ##Coding Test
 
-Introduction
+##Introduction
 
 This is a brief coding session to assert you skills in getting up and raedy with Laravel and VueJS - note that our key interest is on Backend which is build with Laravel.
 The coding session will take 40 minutes maximum
 
-Coding instruction
+##Coding instruction
 
 Create a public github repo
 You will have to commit more than 5 commits while developing
